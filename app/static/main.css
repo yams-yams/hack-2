@@ -1,0 +1,15 @@
+body{
+    margin-top: 1vmax;
+    margin-left: 1vmax;
+}
+   
+h1{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 2.5vmax;
+    color: #c26732
+}
+p{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 1.8vmax;
+    color: green
+}
