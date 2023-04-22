@@ -1,12 +1,17 @@
 from app import app
 from flask import render_template, flash, redirect, url_for
-from app.forms import LoginForm, RegisterForm
+from app.forms import LoginForm, RequestForm, RegisterForm
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     user = {'username': 'Hannah'}
-    return render_template('index.html', user=user)
+    form = RequestForm()
+    if form.validate_on_submit():
+        flash('Query requested: {}'.format(form.query.data))
+        return redirect(url_for('index'))
+    return render_template('index.html', user=user, title='Ask a Question', form=form,)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
