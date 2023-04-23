@@ -1,8 +1,9 @@
 from app import app, db
 from flask import render_template, flash, redirect, url_for
-from app.forms import LoginForm, RequestForm, RegisterForm
+from app.forms import LoginForm, RequestForm, RegisterForm, GradesForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
+from app.UTDText.UTDGrades import generateGraph
 
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
@@ -10,10 +11,14 @@ from app.models import User
 def index():
     user = {'username': 'Hannah'}
     form = RequestForm()
+    form2 = GradesForm()
     if form.validate_on_submit():
         flash('Query requested: {}'.format(form.query.data))
         return redirect(url_for('index'))
-    return render_template('index.html', user=current_user, title='Ask a Question', form=form)
+    if form2.validate_on_submit():
+        generateGraph(form2.subject.data, form2.catalog.data, form2.year.data, form2.semester.data)
+        return redirect(url_for('index'))
+    return render_template('index.html', user=current_user, title='Ask a Question', form=form, form2=form2)
 
 
 @app.route('/login', methods=['GET', 'POST'])

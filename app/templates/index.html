@@ -13,6 +13,36 @@
            {% endfor %}
         </p>
         <p>{{ form.submit(class_="button") }}</p>
+        <p>Or type in class information to get past data.</p>
+         <p>
+            {{ form2.subject.label }}<br>
+            {{ form2.subject(size=32) }}
+            {% for error in form2.subject.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+         </p>
+         <p>
+            {{ form2.catalog.label }}<br>
+            {{ form2.catalog(size=32) }}
+            {% for error in form2.catalog.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+         </p>
+         <p>
+            {{ form2.semester.label }}<br>
+            {{ form2.semester(size=32) }}
+            {% for error in form2.semester.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+         </p>
+         <p>
+            {{ form2.year.label }}<br>
+            {{ form2.year(size=32) }}
+            {% for error in form2.year.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+         </p>
+        <p>{{ form2.submit(class_="button") }}</p>
      </form>
     <!-- <h1>Hi, {{ user.username }}!</h1> -->
 {% endblock %}

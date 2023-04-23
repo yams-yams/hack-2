@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, FileField
-from wtforms.validators import DataRequired, NumberRange, Optional, ValidationError
+from wtforms.validators import DataRequired, NumberRange, Optional, ValidationError, AnyOf, Length
 from app.models import User
 
 class LoginForm(FlaskForm):
@@ -23,5 +23,12 @@ class RegisterForm(FlaskForm):
             raise ValidationError(message='Please use a different username.') 
 
 class RequestForm(FlaskForm):
-    query = StringField('What is your question?', validators=[DataRequired()])
+    query = StringField('What is your question?', validators=[Optional(strip_whitespace=True)])
+    submit = SubmitField('Submit')
+
+class GradesForm(FlaskForm):
+    year = IntegerField('Which Year?', validators=[DataRequired()])
+    semester = StringField('Which semester?', validators=[DataRequired(),AnyOf(values=['Fall','Spring','Summer'])])
+    class4 = StringField('Class Code', validators=[DataRequired(),Length(max=4)])
+    courseNum = IntegerField('Course Number', validators=[DataRequired(),NumberRange(min=1010, max=8399)])
     submit = SubmitField('Submit')
