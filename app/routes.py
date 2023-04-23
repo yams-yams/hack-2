@@ -9,14 +9,13 @@ from app.UTDText.UTDGrades import generateGraph
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    user = {'username': 'Hannah'}
     form = RequestForm()
     form2 = GradesForm()
     if form.validate_on_submit():
         flash('Query requested: {}'.format(form.query.data))
         return redirect(url_for('index'))
     if form2.validate_on_submit():
-        generateGraph(form2.subject.data, form2.catalog.data, form2.year.data, form2.semester.data)
+        generateGraph(form2.class4.data, form2.courseNum.data, form2.year.data, form2.semester.data)
         return redirect(url_for('index'))
     return render_template('index.html', user=current_user, title='Ask a Question', form=form, form2=form2)
 

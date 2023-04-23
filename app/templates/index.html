@@ -15,16 +15,16 @@
         <p>{{ form.submit(class_="button") }}</p>
         <p>Or type in class information to get past data.</p>
          <p>
-            {{ form2.subject.label }}<br>
-            {{ form2.subject(size=32) }}
-            {% for error in form2.subject.errors %}
+            {{ form2.class4.label }}<br>
+            {{ form2.class4(size=32) }}
+            {% for error in form2.class4.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
          </p>
          <p>
-            {{ form2.catalog.label }}<br>
-            {{ form2.catalog(size=32) }}
-            {% for error in form2.catalog.errors %}
+            {{ form2.courseNum.label }}<br>
+            {{ form2.courseNum(size=32) }}
+            {% for error in form2.courseNum.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
          </p>
