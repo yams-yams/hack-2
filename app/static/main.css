@@ -6,10 +6,10 @@ body{
 h1{
     font-family: Verdana, Geneva, sans-serif;
     font-size: 2.5vmax;
-    color: #c26732
+    color: rgb(232, 117, 0)
 }
 p{
     font-family: Verdana, Geneva, sans-serif;
     font-size: 1.8vmax;
-    color: green
+    color: rgb(18, 71, 52)
 }
