@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, FileField
-from wtforms.validators import DataRequired, NumberRange, Optional
+from wtforms.validators import DataRequired, NumberRange, Optional, ValidationError
 from app.models import User
 
 class LoginForm(FlaskForm):
@@ -20,7 +20,7 @@ class RegisterForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
-            raise ValidationError('Please use a different username.') 
+            raise ValidationError(message='Please use a different username.') 
 
 class RequestForm(FlaskForm):
     query = StringField('What is your question?', validators=[DataRequired()])
