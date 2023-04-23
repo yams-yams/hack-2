@@ -12,6 +12,43 @@ h1{
 
 p{
     font-family: Verdana, Geneva, sans-serif;
-    font-size: 1.8vmax;
-    color: rgb(18, 71, 52)
+    font-size: 1.1vmax;
+    color: #154734;
+}
+
+.tab-bar{
+    background-color: #154734;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.6%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.tab{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2vmax;
+}
+
+.tab:hover,
+.tab:active{
+    cursor: pointer;
+    color: #5fe0b7;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: #c26732;
+}
+
+.button{
+    background-color: #e87500;
+    border: none;
+    color: white;
+    padding: 0.5% 0.6%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1vmax;
+    border-radius: 4px;
 }
