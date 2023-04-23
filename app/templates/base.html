@@ -10,11 +10,11 @@
       />
     </head>
     <body>
-      <div>
-         Rosivda: 
-         <a href="{{ url_for('index') }}">Home/Request</a>
-         <a href="{{ url_for('register') }}">Sign Up</a>
-         <a href="{{ url_for('login') }}">Login</a>
+      <div class="tab-bar">
+         <!-- Rosivda:  -->
+         <a class="tab" href="{{ url_for('index') }}">Home/Request</a>
+         <a class="tab" href="{{ url_for('register') }}">Sign Up</a>
+         <a class="tab" href="{{ url_for('login') }}">Login</a>
       </div>
         <hr>
         {% with messages = get_flashed_messages() %}
