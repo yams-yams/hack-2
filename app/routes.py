@@ -13,7 +13,7 @@ def index():
     if form.validate_on_submit():
         flash('Query requested: {}'.format(form.query.data))
         return redirect(url_for('index'))
-    return render_template('index.html', user=current_user, title='Ask a Question', form=form,)
+    return render_template('index.html', user=current_user, title='Ask a Question', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
