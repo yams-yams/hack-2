@@ -1,9 +1,11 @@
-from app import app, db
+from app import app, db, df
 from flask import render_template, flash, redirect, url_for
 from app.forms import LoginForm, RequestForm, RegisterForm, GradesForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from app.UTDText.UTDGrades import generateGraph
+from app.chat import *
+import os
 
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
@@ -11,13 +13,16 @@ from app.UTDText.UTDGrades import generateGraph
 def index():
     form = RequestForm()
     form2 = GradesForm()
+    text = ""
+    messages = [{"role": "system",
+                 "content": f"You are an AI academic advisor named GradGuide that has been trained on text embeddings of the UT Dallas catalogs. Use text embeddings to inform your responses"}]
     if form.validate_on_submit():
-        flash('Query requested: {}'.format(form.query.data))
-        return redirect(url_for('index'))
+        text = askGPT(form.query.data, messages, df)
+        return render_template('index.html', user=current_user, title='Ask a Question', form=form, form2=form2, text=text)
     if form2.validate_on_submit():
         generateGraph(form2.class4.data, form2.courseNum.data, form2.year.data, form2.semester.data)
         return redirect(url_for('index'))
-    return render_template('index.html', user=current_user, title='Ask a Question', form=form, form2=form2)
+    return render_template('index.html', user=current_user, title='Ask a Question', form=form, form2=form2, text=text)
 
 
 @app.route('/login', methods=['GET', 'POST'])
