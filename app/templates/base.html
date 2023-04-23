@@ -13,8 +13,11 @@
       <div class="tab-bar">
          <!-- Rosivda:  -->
          <a class="tab" href="{{ url_for('index') }}">Home/Request</a>
+         {% if current_user.is_anonymous %}
          <a class="tab" href="{{ url_for('register') }}">Sign Up</a>
+         {% else %}
          <a class="tab" href="{{ url_for('login') }}">Login</a>
+         {% endif %}
       </div>
         <hr>
         {% with messages = get_flashed_messages() %}
