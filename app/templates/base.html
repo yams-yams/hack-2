@@ -10,13 +10,13 @@
       />
     </head>
     <body>
-      <div>
-         Rosivda: 
-         <a href="{{ url_for('index') }}">Home/Request</a>
+      <div class="tab-bar">
+         <!-- Rosivda:  -->
+         <a class="tab" href="{{ url_for('index') }}">Home/Request</a>
          {% if current_user.is_anonymous %}
-         <a href="{{ url_for('register') }}">Sign Up</a>
+         <a class="tab" href="{{ url_for('register') }}">Sign Up</a>
          {% else %}
-         <a href="{{ url_for('login') }}">Login</a>
+         <a class="tab" href="{{ url_for('login') }}">Login</a>
          {% endif %}
       </div>
         <hr>
